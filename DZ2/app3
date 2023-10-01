@@ -1,0 +1,59 @@
+//Задание 3. Дан следующий код, исправьте его там, где требуется
+
+public static void main(String[] args) throws Exception {
+   try {
+       int a = 90;
+       int b = 3;
+       System.out.println(a / b);
+       printSum(23, 234);
+       // В строке printSum(23, 234); вызывается метод printSum, который ожидает аргументы типа Integer,
+       // но передаются аргументы типа int. Чтобы исправить это, нужно изменить тип аргументов на int или
+       // привести аргументы к типу Integer. В данном случае можно изменить тип аргументов на int.
+
+       int[] abc = { 1, 2 };
+       abc[3] = 9;
+       // В строке abc[3] = 9; происходит обращение к индексу массива (3), который выходит за пределы его размера (2).
+       // Чтобы исправить это, нужно изменить индекс на значение, которое находится в пределах размера массива.
+       // В данном случае, массив abc содержит только два элемента, поэтому доступными индексами будут 0 и 1.
+
+   } catch (Throwable ex) {
+       System.out.println("Что-то пошло не так...");
+       // В блоке try-catch обрабатывается исключение типа Throwable, которое является родительским для всех исключений.
+       // Однако, такой подход считается плохой практикой, так как обработка исключений должна быть более специфичной, а
+       // мы в методе main перехватываем любое исключение типа "Throwable" и до других ничего не доходит.
+       // В данном случае, можно убрать блок catch (Throwable ex) и оставить только более конкретные блоки catch. 
+       // Более специфичные типы исключений должны быть указаны раньше, чем общие типы. 
+   } catch (NullPointerException ex) {
+       System.out.println("Указатель не может указывать на null!");
+   } catch (IndexOutOfBoundsException ex) {
+       System.out.println("Массив выходит за пределы своего размера!");
+   }
+}
+public static void printSum(Integer a, Integer b) throws FileNotFoundException {
+   System.out.println(a + b);
+}
+ // В методе printSum(Integer a, Integer b) объявлено, что метод может выбрасывать исключение типа FileNotFoundException,
+ // однако в самом методе нет кода, который может вызвать это исключение. В данном случае, можно 
+ // убрать throws FileNotFoundException из объявления метода printSum.
+
+ // Пример исправленной программы:
+public static void main(String[] args) throws Exception {
+   try {
+       int a = 90;
+       int b = 3;
+       System.out.println(a / b);
+       printSum(23, 234);
+       int[] abc = { 1, 2 };
+       abc[3] = 9;
+   } catch (NullPointerException ex) {
+       System.out.println("Указатель не может указывать на null!");
+   } catch (IndexOutOfBoundsException ex) {
+       System.out.println("Массив выходит за пределы своего размера!");
+   } catch (Exception ex) {
+       System.out.println("Что-то пошло не так...");
+   }
+}
+
+public static void printSum(int a, int b) {
+   System.out.println(a + b);
+}
